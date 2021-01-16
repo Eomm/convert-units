@@ -1,26 +1,24 @@
-convert-units
-=============
+# @eomm/convert-units
 
-[![Build Status](https://travis-ci.org/ben-ng/convert-units.png)](https://travis-ci.org/ben-ng/convert-units) [![Downloads](https://img.shields.io/npm/dm/convert-units.svg)](https://www.npmjs.com/package/convert-units)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 A handy utility for converting between quantities in different units.
 
-Installation
------
+
+## Install
 
 ```
-npm install convert-units --save
+npm install @eomm/convert-units
 ```
 
-Usage
------
+## Usage
 
-`convert-units` has a simple chained API that is easy to read.
+`@eomm/convert-units` has a simple chained API that is easy to read.
 
 Here's how you move between the metric units for volume:
 
 ```js
-var convert = require('convert-units')
+var convert = require('@eomm/convert-units')
 
 convert(1).from('l').to('ml')
 // 1000
@@ -129,8 +127,8 @@ convert().list('mass')
 */
 ```
 
-Supported Units
----------------
+## Supported Units
+
 ### Length
 * mm
 * cm
@@ -365,32 +363,11 @@ Supported Units
 * g (g-force)
 * m/s2
 
+# Acknowledgements
 
-### Want More?
+This project has been forked from [ben-ng/convert-units](https://github.com/ben-ng/convert-units). All the credits before the commit [d950cd1](https://github.com/ben-ng/convert-units/commit/d950cd139a0b17b6986e59d044f74c90a0ff70cd) goes to the [ben-ng/convert-units](https://github.com/ben-ng/convert-units) project contributors. After, the project will be maintained by the [Eomm](https://github.com/Eomm).
 
-Adding new measurement sets is easy. Take a look at [`lib/definitions`](https://github.com/ben-ng/convert-units/tree/master/lib/definitions) to see how it's done.
 
-License
--------
-Copyright (c) 2013-2017 Ben Ng and Contributors, http://benng.me
+## License
 
-Permission is hereby granted, free of charge, to any person
-obtaining a copy of this software and associated documentation
-files (the "Software"), to deal in the Software without
-restriction, including without limitation the rights to use,
-copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the
-Software is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
+Licensed under [MIT](./LICENSE).

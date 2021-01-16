@@ -1,22 +1,25 @@
 {
-  "name": "convert-units",
-  "version": "2.3.4",
+  "name": "@eomm/convert-units",
+  "version": "1.0.0",
   "description": "Convert between quantities in different units",
   "main": "lib",
+  "scripts": {
+    "lint": "standard",
+    "lint:fix": "standard --fix",
+    "test": "jake test --trace"
+  },
   "dependencies": {
     "lodash.keys": "2.3.x",
     "lodash.foreach": "2.3.x"
   },
   "devDependencies": {
     "assert-diff": "^1.1.0",
-    "jake": "8.0.12"
-  },
-  "scripts": {
-    "test": "jake test --trace"
+    "jake": "8.0.12",
+    "standard": "^16.0.3"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/ben-ng/convert-units.git"
+    "url": "git+https://github.com/Eomm/convert-units.git"
   },
   "keywords": [
     "metric",
@@ -26,5 +29,9 @@
     "fraction"
   ],
   "author": "Ben Ng <me@benng.me> (http://benng.me)",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Eomm/convert-units/issues"
+  },
+  "homepage": "https://github.com/Eomm/convert-units#readme"
 }
