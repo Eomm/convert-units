@@ -1,178 +1,204 @@
 const convert = require('../lib')
-const assert = require('assert-diff')
-const tests = {}
+const { test } = require('tap')
 
-assert.options.strict = true
-
-tests['l possibilities'] = function () {
+test('l possibilities', (t) => {
+  t.plan(1)
   const actual = convert().from('l').possibilities()
   const expected = ['mm3', 'cm3', 'ml', 'cl', 'dl', 'l', 'kl', 'm3', 'km3', 'krm', 'tsk', 'msk', 'kkp', 'glas', 'kanna', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['kg possibilities'] = function () {
+test('kg possibilities', (t) => {
+  t.plan(1)
   const actual = convert().from('kg').possibilities()
   const expected = ['mcg', 'mg', 'g', 'kg', 'mt', 'oz', 'lb', 't']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['m possibilities'] = function () {
+test('m possibilities', (t) => {
+  t.plan(1)
   const actual = convert().from('m').possibilities()
   const expected = ['mm', 'cm', 'm', 'km', 'in', 'yd', 'ft-us', 'ft', 'fathom', 'mi', 'nMi']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['each possibilities'] = function () {
+test('each possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('each')
   const expected = ['ea', 'dz']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['mass possibilities'] = function () {
+test('mass possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('mass')
   const expected = ['mcg', 'mg', 'g', 'kg', 'mt', 'oz', 'lb', 't']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['volume possibilities'] = function () {
+test('volume possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('volume')
   const expected = ['mm3', 'cm3', 'ml', 'cl', 'dl', 'l', 'kl', 'm3', 'km3', 'krm', 'tsk', 'msk', 'kkp', 'glas', 'kanna', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['volume flow rate possibilities'] = function () {
+test('volume flow rate possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('volumeFlowRate')
   const expected = ['mm3/s', 'cm3/s', 'ml/s', 'cl/s', 'dl/s', 'l/s', 'l/min', 'l/h', 'kl/s', 'kl/min', 'kl/h', 'm3/s', 'm3/min', 'm3/h', 'km3/s', 'tsp/s', 'Tbs/s', 'in3/s', 'in3/min', 'in3/h', 'fl-oz/s', 'fl-oz/min', 'fl-oz/h', 'cup/s', 'pnt/s', 'pnt/min', 'pnt/h', 'qt/s', 'gal/s', 'gal/min', 'gal/h', 'ft3/s', 'ft3/min', 'ft3/h', 'yd3/s', 'yd3/min', 'yd3/h']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['length possibilities'] = function () {
+test('length possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('length')
   const expected = ['mm', 'cm', 'm', 'km', 'in', 'yd', 'ft-us', 'ft', 'fathom', 'mi', 'nMi']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['temperature possibilities'] = function () {
+test('temperature possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('temperature')
   const expected = ['C', 'K', 'F', 'R']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['time possibilities'] = function () {
+test('time possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('time')
   const expected = ['ns', 'mu', 'ms', 's', 'min', 'h', 'd', 'week', 'month', 'year']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['digital possibilities'] = function () {
+test('digital possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('digital')
   const expected = ['b', 'Kb', 'Mb', 'Gb', 'Tb', 'B', 'KB', 'MB', 'GB', 'TB']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['partsPer possibilities'] = function () {
+test('partsPer possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('partsPer')
   const expected = ['ppm', 'ppb', 'ppt', 'ppq']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['pressure possibilities'] = function () {
+test('pressure possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('pressure')
   const expected = ['Pa', 'kPa', 'MPa', 'hPa', 'bar', 'torr', 'psi', 'ksi']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['speed possibilities'] = function () {
+test('speed possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('speed')
   const expected = ['m/s', 'km/h', 'm/h', 'knot', 'ft/s']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['pace possibilities'] = function () {
+test('pace possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('pace')
   const expected = ['s/m', 'min/km', 'min/mi', 's/ft']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['current possibilities'] = function () {
+test('current possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('current')
   const expected = ['A', 'mA', 'kA']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['voltage possibilities'] = function () {
+test('voltage possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('voltage')
   const expected = ['V', 'mV', 'kV']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['power possibilities'] = function () {
+test('power possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('power')
   const expected = ['W', 'mW', 'kW', 'MW', 'GW']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['reactive power possibilities'] = function () {
+test('reactive power possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('reactivePower')
   const expected = ['VAR', 'mVAR', 'kVAR', 'MVAR', 'GVAR']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['apparent power possibilities'] = function () {
+test('apparent power possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('apparentPower')
   const expected = ['VA', 'mVA', 'kVA', 'MVA', 'GVA']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['energy possibilities'] = function () {
+test('energy possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('energy')
   const expected = ['Wh', 'mWh', 'kWh', 'MWh', 'GWh', 'J', 'kJ']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['reactive energy possibilities'] = function () {
+test('reactive energy possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('reactiveEnergy')
   const expected = ['VARh', 'mVARh', 'kVARh', 'MVARh', 'GVARh']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['reactive energy possibilities'] = function () {
+test('reactive energy possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('frequency')
   const expected = ['Hz', 'mHz', 'kHz', 'MHz', 'GHz', 'THz', 'rpm', 'deg/s', 'rad/s']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['illuminance possibilities'] = function () {
+test('illuminance possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('illuminance')
   const expected = ['lx', 'ft-cd']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['angle possibilities'] = function () {
+test('angle possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('angle')
   const expected = ['rad', 'deg', 'grad', 'arcmin', 'arcsec']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['charge possibilities'] = function () {
+test('charge possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('charge')
   const expected = ['c', 'mC', 'μC', 'nC', 'pC']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['force possibilities'] = function () {
+test('force possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('force')
   const expected = ['N', 'kN', 'lbf']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['acceleration possibilities'] = function () {
+test('acceleration possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities('acceleration')
   const expected = ['g-force', 'm/s2']
-  assert.deepEqual(actual.sort(), expected.sort())
-}
+  t.deepEquals(actual.sort(), expected.sort())
+})
 
-tests['all possibilities'] = function () {
+test('all possibilities', (t) => {
+  t.plan(1)
   const actual = convert().possibilities()
   // Please keep these sorted for maintainability
   const expected = [
@@ -376,12 +402,10 @@ tests['all possibilities'] = function () {
   ]
 
   try {
-    assert.deepEqual(actual.sort(), expected.sort())
+    t.deepEquals(actual.sort(), expected.sort())
   } catch (e) {
     // This gets too long, and gets truncated
     process.stderr.write(e + '\n')
     throw e
   }
-}
-
-module.exports = tests
+})

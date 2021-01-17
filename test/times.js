@@ -1,68 +1,81 @@
+'use strict'
+
 const convert = require('../lib')
-const assert = require('assert')
-const tests = {}
+const { test } = require('tap')
+
 const ACCURACY = 1 / 1000
 const percentError = require('../lib/percentError')
 
-tests['s to ns'] = function () {
+test('s to ns', (t) => {
+  t.plan(1)
   const expected = 1000000000
   const actual = convert(1).from('s').to('ns')
-  assert.ok(percentError(expected, actual) < ACCURACY
+  t.ok(percentError(expected, actual) < ACCURACY
     , 'Expected: ' + expected + ', Actual: ' + actual)
-}
+})
 
-tests['s to mu'] = function () {
-  assert.strictEqual(convert(1).from('s').to('mu'), 1000000)
-}
+test('s to mu', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('s').to('mu'), 1000000)
+})
 
-tests['s to ms'] = function () {
-  assert.strictEqual(convert(1).from('s').to('ms'), 1000)
-}
+test('s to ms', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('s').to('ms'), 1000)
+})
 
-tests['s to m'] = function () {
-  assert.strictEqual(convert(60).from('s').to('min'), 1)
-}
+test('s to m', (t) => {
+  t.plan(1)
+  t.equals(convert(60).from('s').to('min'), 1)
+})
 
-tests['s to s'] = function () {
-  assert.strictEqual(convert(1).from('s').to('s'), 1)
-}
+test('s to s', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('s').to('s'), 1)
+})
 
-tests['s to h'] = function () {
-  assert.strictEqual(convert(3600).from('s').to('h'), 1)
-}
+test('s to h', (t) => {
+  t.plan(1)
+  t.equals(convert(3600).from('s').to('h'), 1)
+})
 
-tests['s to d'] = function () {
-  assert.strictEqual(convert(86400).from('s').to('d'), 1)
-}
+test('s to d', (t) => {
+  t.plan(1)
+  t.equals(convert(86400).from('s').to('d'), 1)
+})
 
-tests['d to week'] = function () {
-  assert.strictEqual(convert(7).from('d').to('week'), 1)
-}
+test('d to week', (t) => {
+  t.plan(1)
+  t.equals(convert(7).from('d').to('week'), 1)
+})
 
-tests['d to month'] = function () {
-  assert.strictEqual(convert(30.4375).from('d').to('month'), 1)
-}
+test('d to month', (t) => {
+  t.plan(1)
+  t.equals(convert(30.4375).from('d').to('month'), 1)
+})
 
-tests['d to year'] = function () {
-  assert.strictEqual(convert(365.25).from('d').to('year'), 1)
-}
+test('d to year', (t) => {
+  t.plan(1)
+  t.equals(convert(365.25).from('d').to('year'), 1)
+})
 
-tests['week to month'] = function () {
+test('week to month', (t) => {
+  t.plan(1)
   const expected = 1
   const actual = convert(4.34821).from('week').to('month')
-  assert.ok(percentError(expected, actual) < ACCURACY
+  t.ok(percentError(expected, actual) < ACCURACY
     , 'Expected: ' + expected + ', Actual: ' + actual)
-}
+})
 
-tests['week to year'] = function () {
+test('week to year', (t) => {
+  t.plan(1)
   const expected = 1
   const actual = convert(52.17857).from('week').to('year')
-  assert.ok(percentError(expected, actual) < ACCURACY
+  t.ok(percentError(expected, actual) < ACCURACY
     , 'Expected: ' + expected + ', Actual: ' + actual)
-}
+})
 
-tests['month to year'] = function () {
-  assert.strictEqual(convert(12).from('month').to('year'), 1)
-}
-
-module.exports = tests
+test('month to year', (t) => {
+  t.plan(1)
+  t.equals(convert(12).from('month').to('year'), 1)
+})

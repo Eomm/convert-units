@@ -1,41 +1,49 @@
+'use strict'
+
 const convert = require('../lib')
-const assert = require('assert')
-const tests = {}
+const { test } = require('tap')
 
-tests['A to A'] = function () {
-  assert.strictEqual(convert(1).from('A').to('A'), 1)
-}
+test('A to A', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('A').to('A'), 1)
+})
 
-tests['mA to mA'] = function () {
-  assert.strictEqual(convert(1).from('mA').to('mA'), 1)
-}
+test('mA to mA', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('mA').to('mA'), 1)
+})
 
-tests['kA to kA'] = function () {
-  assert.strictEqual(convert(1).from('kA').to('kA'), 1)
-}
+test('kA to kA', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('kA').to('kA'), 1)
+})
 
-tests['A to mA'] = function () {
-  assert.strictEqual(convert(1).from('A').to('mA'), 1000)
-}
+test('A to mA', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('A').to('mA'), 1000)
+})
 
-tests['A to kA'] = function () {
-  assert.strictEqual(convert(1).from('A').to('kA'), 0.001)
-}
+test('A to kA', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('A').to('kA'), 0.001)
+})
 
-tests['kA to mA'] = function () {
-  assert.strictEqual(convert(1).from('kA').to('mA'), 1000000)
-}
+test('kA to mA', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('kA').to('mA'), 1000000)
+})
 
-tests['mA to kA'] = function () {
-  assert.strictEqual(convert(1).from('mA').to('kA'), 0.000001)
-}
+test('mA to kA', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('mA').to('kA'), 0.000001)
+})
 
-tests['mA to A'] = function () {
-  assert.strictEqual(convert(1).from('mA').to('A'), 0.001)
-}
+test('mA to A', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('mA').to('A'), 0.001)
+})
 
-tests['kA to A'] = function () {
-  assert.strictEqual(convert(1).from('kA').to('A'), 1000)
-}
-
-module.exports = tests
+test('kA to A', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('kA').to('A'), 1000)
+})

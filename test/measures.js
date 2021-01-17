@@ -1,11 +1,11 @@
-const convert = require('../lib')
-const assert = require('assert')
-const tests = {}
+'use strict'
 
-tests.measures = function () {
+const convert = require('../lib')
+const { test } = require('tap')
+
+test('measures', function (t) {
+  t.plan(1)
   const actual = convert().measures()
   const expected = ['length', 'area', 'mass', 'volume', 'each', 'temperature', 'time', 'digital', 'partsPer', 'speed', 'pace', 'pressure', 'current', 'voltage', 'power', 'reactivePower', 'apparentPower', 'energy', 'reactiveEnergy', 'volumeFlowRate', 'illuminance', 'frequency', 'angle', 'charge', 'force', 'acceleration']
-  assert.deepEqual(actual, expected)
-}
-
-module.exports = tests
+  t.deepEquals(actual, expected)
+})

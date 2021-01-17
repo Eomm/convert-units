@@ -1,13 +1,14 @@
+'use strict'
+
 const convert = require('../lib')
-const assert = require('assert')
-const tests = {}
+const { test } = require('tap')
 
-tests['ft-cd to lx'] = function () {
-  assert.strictEqual(convert(1).from('ft-cd').to('lx'), 10.76391)
-}
+test('ft-cd to lx', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('ft-cd').to('lx'), 10.76391)
+})
 
-tests['lx to ft-cd'] = function () {
-  assert.strictEqual(convert(1).from('lx').to('ft-cd'), 0.09290304359661128)
-}
-
-module.exports = tests
+test('lx to ft-cd', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('lx').to('ft-cd'), 0.09290304359661128)
+})

@@ -1,8 +1,10 @@
-const convert = require('../lib')
-const assert = require('assert')
-const tests = {}
+'use strict'
 
-tests['best mm'] = function () {
+const convert = require('../lib')
+const { test } = require('tap')
+
+test('best mm', (t) => {
+  t.plan(1)
   const actual = convert(1200).from('mm').toBest()
   const expected = {
     val: 1.2,
@@ -11,10 +13,11 @@ tests['best mm'] = function () {
     plural: 'Meters'
   }
 
-  assert.deepEqual(actual, expected)
-}
+  t.deepEqual(actual, expected)
+})
 
-tests['excludes measurements'] = function () {
+test('excludes measurements', (t) => {
+  t.plan(1)
   const actual = convert(1200000).from('mm').toBest({ exclude: ['km', 'm'] })
   const expected = {
     val: 120000,
@@ -23,10 +26,11 @@ tests['excludes measurements'] = function () {
     plural: 'Centimeters'
   }
 
-  assert.deepEqual(actual, expected)
-}
+  t.deepEqual(actual, expected)
+})
 
-tests['does not break when excluding from measurement'] = function () {
+test('does not break when excluding from measurement', (t) => {
+  t.plan(1)
   const actual = convert(10).from('km').toBest({ exclude: ['km'] })
   const expected = {
     val: 10000,
@@ -35,10 +39,11 @@ tests['does not break when excluding from measurement'] = function () {
     plural: 'Meters'
   }
 
-  assert.deepEqual(actual, expected)
-}
+  t.deepEquals(actual, expected)
+})
 
-tests['if all measurements are excluded return from'] = function () {
+test('if all measurements are excluded return from', (t) => {
+  t.plan(1)
   const actual = convert(10).from('km').toBest({ exclude: ['mm, cm, m, km'] })
   const expected = {
     val: 10,
@@ -47,10 +52,11 @@ tests['if all measurements are excluded return from'] = function () {
     plural: 'Kilometers'
   }
 
-  assert.deepEqual(actual, expected)
-}
+  t.deepEquals(actual, expected)
+})
 
-tests['pre-cut off number'] = function () {
+test('pre-cut off number', (t) => {
+  t.plan(1)
   const actual = convert(9000).from('mm').toBest({ cutOffNumber: 10 })
   const expected = {
     val: 900,
@@ -59,10 +65,11 @@ tests['pre-cut off number'] = function () {
     plural: 'Centimeters'
   }
 
-  assert.deepEqual(actual, expected)
-}
+  t.deepEquals(actual, expected)
+})
 
-tests['post-cut off number'] = function () {
+test('post-cut off number', (t) => {
+  t.plan(1)
   const actual = convert(10000).from('mm').toBest({ cutOffNumber: 10 })
   const expected = {
     val: 10,
@@ -71,7 +78,5 @@ tests['post-cut off number'] = function () {
     plural: 'Meters'
   }
 
-  assert.deepEqual(actual, expected)
-}
-
-module.exports = tests
+  t.deepEquals(actual, expected)
+})

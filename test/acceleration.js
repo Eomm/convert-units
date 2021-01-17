@@ -1,13 +1,14 @@
+'use strict'
+
 const convert = require('../lib')
-const assert = require('assert')
-const tests = {}
+const { test } = require('tap')
 
-tests['g to m/s2'] = function () {
-  assert.strictEqual(convert(1).from('g-force').to('m/s2'), 9.80665)
-}
+test('g to m/s2', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('g-force').to('m/s2'), 9.80665)
+})
 
-tests['m/s2 to g'] = function () {
-  assert.strictEqual(convert(9.80665).from('m/s2').to('g-force'), 1)
-}
-
-module.exports = tests
+test('m/s2 to g', (t) => {
+  t.plan(1)
+  t.equals(convert(9.80665).from('m/s2').to('g-force'), 1)
+})

@@ -1,8 +1,10 @@
-const convert = require('../lib')
-const assert = require('assert')
-const tests = {}
+'use strict'
 
-tests['get kg'] = function () {
+const convert = require('../lib')
+const { test } = require('tap')
+
+test('get kg', (t) => {
+  t.plan(1)
   const actual = convert().describe('kg')
   const expected = {
     abbr: 'kg',
@@ -12,10 +14,11 @@ tests['get kg'] = function () {
     plural: 'Kilograms'
   }
 
-  assert.deepEqual(actual, expected)
-}
+  t.deepEquals(actual, expected)
+})
 
-tests['get ac'] = function () {
+test('get ac', (t) => {
+  t.plan(1)
   const actual = convert().describe('ac')
   const expected = {
     abbr: 'ac',
@@ -25,7 +28,5 @@ tests['get ac'] = function () {
     plural: 'Acres'
   }
 
-  assert.deepEqual(actual, expected)
-}
-
-module.exports = tests
+  t.deepEquals(actual, expected)
+})
