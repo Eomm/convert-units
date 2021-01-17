@@ -1,5 +1,6 @@
 # @eomm/convert-units
 
+[![Build Status](https://github.com/Eomm/convert-units/workflows/ci/badge.svg)](https://github.com/Eomm/convert-units/actions)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 A handy utility for converting between quantities in different units.
@@ -365,7 +366,7 @@ convert().list('mass')
 
 # Acknowledgements
 
-This project has been forked from [ben-ng/convert-units](https://github.com/ben-ng/convert-units). All the credits before the commit [d950cd1](https://github.com/ben-ng/convert-units/commit/d950cd139a0b17b6986e59d044f74c90a0ff70cd) goes to the [ben-ng/convert-units](https://github.com/ben-ng/convert-units) project contributors. After, the project will be maintained by the [Eomm](https://github.com/Eomm).
+This project has been forked from [ben-ng/convert-units](https://github.com/ben-ng/convert-units). All the credits before the commit [d950cd1](https://github.com/ben-ng/convert-units/commit/d950cd139a0b17b6986e59d044f74c90a0ff70cd) goes to the [ben-ng/convert-units](https://github.com/ben-ng/convert-units) project contributors. After, the project will be maintained by the me ([Eomm](https://github.com/Eomm)).
 
 
 ## License
