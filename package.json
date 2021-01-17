@@ -2,6 +2,7 @@
   "name": "@eomm/convert-units",
   "version": "1.0.0",
   "description": "Convert between quantities in different units",
+  "private": false,
   "main": "lib",
   "scripts": {
     "lint": "standard",
