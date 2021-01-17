@@ -9,7 +9,6 @@
     "test": "jake test --trace"
   },
   "dependencies": {
-    "lodash.keys": "2.3.x",
     "lodash.foreach": "2.3.x"
   },
   "devDependencies": {
