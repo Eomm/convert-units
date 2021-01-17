@@ -28,7 +28,18 @@
     "ratio",
     "fraction"
   ],
-  "author": "Ben Ng <me@benng.me> (http://benng.me)",
+  "contributors": [
+    {
+      "name": "Ben Ng",
+      "email": "me@benng.me",
+      "url": "http://benng.me",
+      "author": true
+    },
+    {
+      "name": "Manuel Spigolon",
+      "email": "behemoth89@gmail.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Eomm/convert-units/issues"
