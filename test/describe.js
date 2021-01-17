@@ -1,31 +1,32 @@
-var convert = require('../lib')
-  , assert = require('assert')
-  , tests = {};
+'use strict'
 
-tests['get kg'] = function () {
-  var actual = convert().describe('kg')
-    , expected = {
-        abbr: 'kg'
-      , measure: 'mass'
-      , system: 'metric'
-      , singular: 'Kilogram'
-      , plural: 'Kilograms'
-      };
+const convert = require('../lib')
+const { test } = require('tap')
 
-  assert.deepEqual(actual, expected);
-};
+test('get kg', (t) => {
+  t.plan(1)
+  const actual = convert().describe('kg')
+  const expected = {
+    abbr: 'kg',
+    measure: 'mass',
+    system: 'metric',
+    singular: 'Kilogram',
+    plural: 'Kilograms'
+  }
 
-tests['get ac'] = function () {
-  var actual = convert().describe('ac')
-    , expected = {
-        abbr: 'ac'
-      , measure: 'area'
-      , system: 'imperial'
-      , singular: 'Acre'
-      , plural: 'Acres'
-      };
+  t.deepEquals(actual, expected)
+})
 
-  assert.deepEqual(actual, expected);
-};
+test('get ac', (t) => {
+  t.plan(1)
+  const actual = convert().describe('ac')
+  const expected = {
+    abbr: 'ac',
+    measure: 'area',
+    system: 'imperial',
+    singular: 'Acre',
+    plural: 'Acres'
+  }
 
-module.exports = tests;
+  t.deepEquals(actual, expected)
+})

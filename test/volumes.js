@@ -1,176 +1,212 @@
-var convert = require('../lib')
-  , assert = require('assert')
-  , tests = {}
-  , ACCURACY = 1/1000
-  , percentError = require('../lib/percentError');
+'use strict'
 
-tests['l to l'] = function () {
-  assert.strictEqual( convert(2).from('l').to('l') , 2);
-};
+const convert = require('../lib')
+const { test } = require('tap')
 
-tests['mm3 to l'] = function () {
-  assert.strictEqual( convert(1000000).from('mm3').to('l') , 1);
-};
+const ACCURACY = 1 / 1000
+const percentError = require('../lib/percentError')
 
-tests['cm3 to l'] = function () {
-  assert.strictEqual( convert(100).from('cm3').to('l') , 1/10);
-};
+test('l to l', (t) => {
+  t.plan(1)
+  t.equals(convert(2).from('l').to('l'), 2)
+})
 
-tests['dl to l'] = function () {
-  assert.strictEqual( convert(2).from('dl').to('l') , 0.2);
-};
+test('mm3 to l', (t) => {
+  t.plan(1)
+  t.equals(convert(1000000).from('mm3').to('l'), 1)
+})
 
-tests['cl to l'] = function () {
-  assert.strictEqual( convert(25).from('cl').to('l') , 0.25);
-};
+test('cm3 to l', (t) => {
+  t.plan(1)
+  t.equals(convert(100).from('cm3').to('l'), 1 / 10)
+})
 
-tests['ml to l'] = function () {
-  assert.strictEqual( convert(100).from('ml').to('l') , 1/10);
-};
+test('dl to l', (t) => {
+  t.plan(1)
+  t.equals(convert(2).from('dl').to('l'), 0.2)
+})
 
-tests['m3 to l'] = function () {
-  assert.strictEqual( convert(1).from('m3').to('l') , 1000);
-};
+test('cl to l', (t) => {
+  t.plan(1)
+  t.equals(convert(25).from('cl').to('l'), 0.25)
+})
 
-tests['km3 to l'] = function () {
-  assert.strictEqual( convert(1).from('km3').to('l') , 1000000000000);
-};
+test('ml to l', (t) => {
+  t.plan(1)
+  t.equals(convert(100).from('ml').to('l'), 1 / 10)
+})
 
-tests['l to ml'] = function () {
-  assert.strictEqual( convert(1).from('l').to('ml') , 1000);
-};
+test('m3 to l', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('m3').to('l'), 1000)
+})
 
-tests['dl to ml'] = function () {
-  assert.strictEqual( convert(10).from('dl').to('ml') , 1000);
-};
+test('km3 to l', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('km3').to('l'), 1000000000000)
+})
 
-tests['cl to ml'] = function () {
-  assert.strictEqual( convert(100).from('cl').to('ml') , 1000);
-};
+test('l to ml', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('l').to('ml'), 1000)
+})
 
-tests['ml to ml'] = function () {
-  assert.strictEqual( convert(13).from('ml').to('ml') , 13);
-};
+test('dl to ml', (t) => {
+  t.plan(1)
+  t.equals(convert(10).from('dl').to('ml'), 1000)
+})
 
-tests['msk to ml'] = function () {
-  assert.strictEqual( convert(2).from('msk').to('ml') , 30);
-};
+test('cl to ml', (t) => {
+  t.plan(1)
+  t.equals(convert(100).from('cl').to('ml'), 1000)
+})
 
-tests['tsk to ml'] = function () {
-  assert.strictEqual( convert(3).from('tsk').to('ml') , 15);
-};
+test('ml to ml', (t) => {
+  t.plan(1)
+  t.equals(convert(13).from('ml').to('ml'), 13)
+})
 
-tests['krm to ml'] = function () {
-  assert.strictEqual( convert(13).from('krm').to('ml') , 13);
-};
+test('msk to ml', (t) => {
+  t.plan(1)
+  t.equals(convert(2).from('msk').to('ml'), 30)
+})
 
-tests['kanna to l'] = function () {
-  assert.strictEqual( convert(2).from('kanna').to('l') , 2 * 2.617);
-};
+test('tsk to ml', (t) => {
+  t.plan(1)
+  t.equals(convert(3).from('tsk').to('ml'), 15)
+})
 
-tests['kkp to ml'] = function () {
-  assert.strictEqual( convert(2).from('kkp').to('ml') , 300);
-};
+test('krm to ml', (t) => {
+  t.plan(1)
+  t.equals(convert(13).from('krm').to('ml'), 13)
+})
 
-tests['glas to ml'] = function () {
-  assert.strictEqual( convert(2).from('glas').to('ml') , 400);
-};
+test('kanna to l', (t) => {
+  t.plan(1)
+  t.equals(convert(2).from('kanna').to('l'), 2 * 2.617)
+})
 
-tests['ml to msk'] = function () {
-  assert.strictEqual( convert(15).from('ml').to('msk') , 1);
-};
+test('kkp to ml', (t) => {
+  t.plan(1)
+  t.equals(convert(2).from('kkp').to('ml'), 300)
+})
 
-tests['ml to tsk'] = function () {
-  assert.strictEqual( convert(5).from('ml').to('tsk') , 1);
-};
+test('glas to ml', (t) => {
+  t.plan(1)
+  t.equals(convert(2).from('glas').to('ml'), 400)
+})
 
-tests['ml to krm'] = function () {
-  assert.strictEqual( convert(1).from('ml').to('krm') , 1);
-};
+test('ml to msk', (t) => {
+  t.plan(1)
+  t.equals(convert(15).from('ml').to('msk'), 1)
+})
 
-tests['l to kanna'] = function () {
-  assert.strictEqual( convert(2.617).from('l').to('kanna') , 1);
-};
+test('ml to tsk', (t) => {
+  t.plan(1)
+  t.equals(convert(5).from('ml').to('tsk'), 1)
+})
 
-tests['lm to kkp'] = function () {
-  assert.strictEqual( convert(150).from('ml').to('kkp') , 1);
-};
+test('ml to krm', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('ml').to('krm'), 1)
+})
 
-tests['ml to glas'] = function () {
-  assert.strictEqual( convert(200).from('ml').to('glas') , 1);
-};
+test('l to kanna', (t) => {
+  t.plan(1)
+  t.equals(convert(2.617).from('l').to('kanna'), 1)
+})
 
-tests['fl-oz to fl-oz'] = function () {
-  assert.strictEqual( convert(62).from('fl-oz').to('fl-oz') , 62);
-};
+test('lm to kkp', (t) => {
+  t.plan(1)
+  t.equals(convert(150).from('ml').to('kkp'), 1)
+})
 
-tests['fl-oz to tbsp'] = function () {
-  assert.strictEqual( convert(4).from('fl-oz').to('Tbs') , 8);
-};
+test('ml to glas', (t) => {
+  t.plan(1)
+  t.equals(convert(200).from('ml').to('glas'), 1)
+})
 
-tests['Tbs to fl-oz'] = function () {
-  assert.strictEqual( convert(2).from('Tbs').to('fl-oz') , 1);
-};
+test('fl-oz to fl-oz', (t) => {
+  t.plan(1)
+  t.equals(convert(62).from('fl-oz').to('fl-oz'), 62)
+})
 
-tests['Tbs to Tbs'] = function () {
-  assert.strictEqual( convert(140).from('Tbs').to('Tbs') , 140);
-};
+test('fl-oz to tbsp', (t) => {
+  t.plan(1)
+  t.equals(convert(4).from('fl-oz').to('Tbs'), 8)
+})
+
+test('Tbs to fl-oz', (t) => {
+  t.plan(1)
+  t.equals(convert(2).from('Tbs').to('fl-oz'), 1)
+})
+
+test('Tbs to Tbs', (t) => {
+  t.plan(1)
+  t.equals(convert(140).from('Tbs').to('Tbs'), 140)
+})
 
 // When converting between systems, expect < 0.1% error
-tests['tsp to l'] = function () {
-  var expected = 1.75
-    , actual = convert(355).from('tsp').to('l');
-  assert.ok( percentError(expected, actual) < ACCURACY
-    , 'Expected: ' + expected +', Actual: ' + actual);
-};
+test('tsp to l', (t) => {
+  t.plan(1)
+  const expected = 1.75
+  const actual = convert(355).from('tsp').to('l')
+  t.ok(percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected + ', Actual: ' + actual)
+})
 
-tests['in3 to l'] = function () {
-  var expected = 0.0163871
-    , actual = convert(1).from('in3').to('l');
-  assert.ok( percentError(expected, actual) < ACCURACY
-    , 'Expected: ' + expected +', Actual: ' + actual);
-};
+test('in3 to l', (t) => {
+  t.plan(1)
+  const expected = 0.0163871
+  const actual = convert(1).from('in3').to('l')
+  t.ok(percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected + ', Actual: ' + actual)
+})
 
-tests['in3 to fl-oz'] = function () {
-  var expected = 0.554113
-    , actual = convert(1).from('in3').to('fl-oz');
-  assert.ok( percentError(expected, actual) < ACCURACY
-    , 'Expected: ' + expected +', Actual: ' + actual);
-};
+test('in3 to fl-oz', (t) => {
+  t.plan(1)
+  const expected = 0.554113
+  const actual = convert(1).from('in3').to('fl-oz')
+  t.ok(percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected + ', Actual: ' + actual)
+})
 
-tests['m3 to yd3'] = function () {
-  var expected = 1.30795
-    , actual = convert(1).from('m3').to('yd3');
-  assert.ok( percentError(expected, actual) < ACCURACY
-    , 'Expected: ' + expected +', Actual: ' + actual);
-};
+test('m3 to yd3', (t) => {
+  t.plan(1)
+  const expected = 1.30795
+  const actual = convert(1).from('m3').to('yd3')
+  t.ok(percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected + ', Actual: ' + actual)
+})
 
-tests['ft3 to cm3'] = function () {
-  var expected = 28316.8
-    , actual = convert(1).from('ft3').to('cm3');
-  assert.ok( percentError(expected, actual) < ACCURACY
-    , 'Expected: ' + expected +', Actual: ' + actual);
-};
+test('ft3 to cm3', (t) => {
+  t.plan(1)
+  const expected = 28316.8
+  const actual = convert(1).from('ft3').to('cm3')
+  t.ok(percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected + ', Actual: ' + actual)
+})
 
-tests['pnt to ml'] = function () {
-  var expected = 2366
-    , actual = convert(5).from('pnt').to('ml');
-  assert.ok( percentError(expected, actual) < ACCURACY
-    , 'Expected: ' + expected +', Actual: ' + actual);
-};
+test('pnt to ml', (t) => {
+  t.plan(1)
+  const expected = 2366
+  const actual = convert(5).from('pnt').to('ml')
+  t.ok(percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected + ', Actual: ' + actual)
+})
 
-tests['ml to gal'] = function () {
-  var expected = 2.609
-    , actual = convert(9876).from('ml').to('gal');
-  assert.ok( percentError(expected, actual) < ACCURACY
-    , 'Expected: ' + expected +', Actual: ' + actual);
-};
+test('ml to gal', (t) => {
+  t.plan(1)
+  const expected = 2.609
+  const actual = convert(9876).from('ml').to('gal')
+  t.ok(percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected + ', Actual: ' + actual)
+})
 
-tests['gal to l'] = function () {
-  var expected = 37.85
-    , actual = convert(10).from('gal').to('l');
-  assert.ok( percentError(expected, actual) < ACCURACY
-    , 'Expected: ' + expected +', Actual: ' + actual);
-};
-
-module.exports = tests;
+test('gal to l', (t) => {
+  t.plan(1)
+  const expected = 37.85
+  const actual = convert(10).from('gal').to('l')
+  t.ok(percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected + ', Actual: ' + actual)
+})

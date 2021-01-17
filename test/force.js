@@ -1,23 +1,26 @@
-var convert = require('../lib')
-  , assert = require('assert')
-  , tests = {};
+'use strict'
 
-var EPSILON = 0.000001
+const convert = require('../lib')
+const { test } = require('tap')
 
-tests['N to kN'] = function () {
-  assert.strictEqual(convert(1).from('N').to('kN') , 1/1000);
-};
+const EPSILON = 0.000001
 
-tests['kN to N'] = function () {
-  assert.strictEqual(convert(1).from('kN').to('N') , 1000);
-};
+test('N to kN', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('N').to('kN'), 1 / 1000)
+})
 
-tests['N to lbf'] = function () {
-  assert.strictEqual(true, Math.abs(convert(1).from('N').to('lbf') - 0.224809) < EPSILON);
-};
+test('kN to N', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('kN').to('N'), 1000)
+})
 
-tests['lbf to N'] = function () {
-  assert.strictEqual(convert(1).from('lbf').to('N') , 4.44822);
-};
+test('N to lbf', (t) => {
+  t.plan(1)
+  t.equals(true, Math.abs(convert(1).from('N').to('lbf') - 0.224809) < EPSILON)
+})
 
-module.exports = tests;
+test('lbf to N', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('lbf').to('N'), 4.44822)
+})

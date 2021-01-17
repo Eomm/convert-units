@@ -1,13 +1,14 @@
-var convert = require('../lib')
-  , assert = require('assert')
-  , tests = {};
+'use strict'
 
-tests['ft-cd to lx'] = function () {
-  assert.strictEqual( convert(1).from('ft-cd').to('lx') , 10.76391);
-};
+const convert = require('../lib')
+const { test } = require('tap')
 
-tests['lx to ft-cd'] = function () {
-  assert.strictEqual( convert(1).from('lx').to('ft-cd') , 0.09290304359661128);
-};
+test('ft-cd to lx', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('ft-cd').to('lx'), 10.76391)
+})
 
-module.exports = tests;
+test('lx to ft-cd', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('lx').to('ft-cd'), 0.09290304359661128)
+})

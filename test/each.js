@@ -1,17 +1,19 @@
-var convert = require('../lib')
-  , assert = require('assert')
-  , tests = {};
+'use strict'
 
-tests['ea to ea'] = function () {
-  assert.strictEqual( convert(1).from('ea').to('ea') , 1);
-};
+const convert = require('../lib')
+const { test } = require('tap')
 
-tests['dz to ea'] = function () {
-  assert.strictEqual( convert(1).from('dz').to('ea') , 12);
-};
+test('ea to ea', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('ea').to('ea'), 1)
+})
 
-tests['ea to dz'] = function () {
-  assert.strictEqual( convert(12).from('ea').to('dz') , 1);
-};
+test('dz to ea', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('dz').to('ea'), 12)
+})
 
-module.exports = tests;
+test('ea to dz', (t) => {
+  t.plan(1)
+  t.equals(convert(12).from('ea').to('dz'), 1)
+})

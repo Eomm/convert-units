@@ -1,34 +1,37 @@
-var convert = require('../lib')
-  , assert = require('assert')
-  , tests = {};
+'use strict'
 
-tests['list'] = function () {
-  var list = convert().list()
-    , firstItem = list[0];
+const convert = require('../lib')
+const { test } = require('tap')
 
-  assert(list.length > 0);
-  assert(firstItem.hasOwnProperty("abbr"));
-  assert(typeof firstItem.abbr === "string");
-  assert(firstItem.hasOwnProperty("measure"));
-  assert(typeof firstItem.measure === "string");
-  assert(firstItem.hasOwnProperty("system"));
-  assert(typeof firstItem.system === "string");
-  assert(firstItem.hasOwnProperty("singular"));
-  assert(typeof firstItem.singular === "string");
-  assert(firstItem.hasOwnProperty("plural"));
-  assert(typeof firstItem.plural === "string");
-};
+test('list', function (t) {
+  t.plan(11)
+  const list = convert().list()
+  const firstItem = list[0]
 
-tests['list by measure'] = function () {
-  var full     = convert().list()
-    , measures = convert().measures();
+  const hasOwnProperty = Object.hasOwnProperty.bind(firstItem)
 
-  measures.map(function(measure) {
-    var list = convert().list(measure);
+  t.ok(list.length > 0)
+  t.ok(hasOwnProperty('abbr'))
+  t.ok(typeof firstItem.abbr === 'string')
+  t.ok(hasOwnProperty('measure'))
+  t.ok(typeof firstItem.measure === 'string')
+  t.ok(hasOwnProperty('system'))
+  t.ok(typeof firstItem.system === 'string')
+  t.ok(hasOwnProperty('singular'))
+  t.ok(typeof firstItem.singular === 'string')
+  t.ok(hasOwnProperty('plural'))
+  t.ok(typeof firstItem.plural === 'string')
+})
 
-    assert(list.length > 0);
-    assert(list.length < full.length);
-  });
-};
+test('list by measure', (t) => {
+  const full = convert().list()
+  const measures = convert().measures()
 
-module.exports = tests;
+  t.plan(measures.length * 2)
+  measures.forEach(function (measure) {
+    const list = convert().list(measure)
+
+    t.ok(list.length > 0)
+    t.ok(list.length < full.length)
+  })
+})

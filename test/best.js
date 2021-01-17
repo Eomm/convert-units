@@ -1,77 +1,82 @@
-var convert = require('../lib')
-  , assert = require('assert')
-  , tests = {};
+'use strict'
 
-tests['best mm'] = function () {
-  var actual = convert(1200).from('mm').toBest()
-    , expected = {
-        val: 1.2
-      , unit: 'm'
-      , singular: 'Meter'
-      , plural: 'Meters'
-      };
+const convert = require('../lib')
+const { test } = require('tap')
 
-  assert.deepEqual(actual, expected);
-};
+test('best mm', (t) => {
+  t.plan(1)
+  const actual = convert(1200).from('mm').toBest()
+  const expected = {
+    val: 1.2,
+    unit: 'm',
+    singular: 'Meter',
+    plural: 'Meters'
+  }
 
-tests['excludes measurements'] = function () {
-  var actual = convert(1200000).from('mm').toBest({ exclude: ['km', 'm'] })
-    , expected = {
-        val: 120000
-      , unit: 'cm'
-      , singular: 'Centimeter'
-      , plural: 'Centimeters'
-      };
+  t.deepEqual(actual, expected)
+})
 
-  assert.deepEqual(actual, expected);
-}
+test('excludes measurements', (t) => {
+  t.plan(1)
+  const actual = convert(1200000).from('mm').toBest({ exclude: ['km', 'm'] })
+  const expected = {
+    val: 120000,
+    unit: 'cm',
+    singular: 'Centimeter',
+    plural: 'Centimeters'
+  }
 
-tests['does not break when excluding from measurement'] = function () {
-  var actual = convert(10).from('km').toBest({ exclude: ['km'] })
-    , expected = {
-        val: 10000
-      , unit: 'm'
-      , singular: 'Meter'
-      , plural: 'Meters'
-      };
+  t.deepEqual(actual, expected)
+})
 
-  assert.deepEqual(actual, expected);
-}
+test('does not break when excluding from measurement', (t) => {
+  t.plan(1)
+  const actual = convert(10).from('km').toBest({ exclude: ['km'] })
+  const expected = {
+    val: 10000,
+    unit: 'm',
+    singular: 'Meter',
+    plural: 'Meters'
+  }
 
-tests['if all measurements are excluded return from'] = function () {
-  var actual = convert(10).from('km').toBest({ exclude: ['mm, cm, m, km'] })
-    , expected = {
-        val: 10
-      , unit: 'km'
-      , singular: 'Kilometer'
-      , plural: 'Kilometers'
-      };
+  t.deepEquals(actual, expected)
+})
 
-  assert.deepEqual(actual, expected);
-}
+test('if all measurements are excluded return from', (t) => {
+  t.plan(1)
+  const actual = convert(10).from('km').toBest({ exclude: ['mm, cm, m, km'] })
+  const expected = {
+    val: 10,
+    unit: 'km',
+    singular: 'Kilometer',
+    plural: 'Kilometers'
+  }
 
-tests['pre-cut off number'] = function () {
-  var actual = convert(9000).from('mm').toBest({ cutOffNumber: 10 })
-    , expected = {
-        val: 900
-      , unit: 'cm'
-      , singular: 'Centimeter'
-      , plural: 'Centimeters'
-      };
+  t.deepEquals(actual, expected)
+})
 
-  assert.deepEqual(actual, expected);
-}
+test('pre-cut off number', (t) => {
+  t.plan(1)
+  const actual = convert(9000).from('mm').toBest({ cutOffNumber: 10 })
+  const expected = {
+    val: 900,
+    unit: 'cm',
+    singular: 'Centimeter',
+    plural: 'Centimeters'
+  }
 
-tests['post-cut off number'] = function () {
-  var actual = convert(10000).from('mm').toBest({ cutOffNumber: 10 })
-    , expected = {
-        val: 10
-      , unit: 'm'
-      , singular: 'Meter'
-      , plural: 'Meters'
-      };
+  t.deepEquals(actual, expected)
+})
 
-  assert.deepEqual(actual, expected);
-}
+test('post-cut off number', (t) => {
+  t.plan(1)
+  const actual = convert(10000).from('mm').toBest({ cutOffNumber: 10 })
+  const expected = {
+    val: 10,
+    unit: 'm',
+    singular: 'Meter',
+    plural: 'Meters'
+  }
 
-module.exports = tests;
+  t.deepEquals(actual, expected)
+})
