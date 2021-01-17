@@ -103,7 +103,10 @@ test('kl/s to kl/h', (t) => {
 
 test('l/s to kl/h', (t) => {
   t.plan(1)
-  t.equals(convert(1).from('l/s').to('kl/h'), 3.6)
+
+  const expected = 3.6
+  const actual = convert(1).from('l/s').to('kl/h')
+  t.ok(percentError(expected, actual) < ACCURACY, 'Expected: ' + expected + ', Actual: ' + actual)
 })
 
 test('l/s to m3/s', (t) => {
@@ -185,32 +188,28 @@ test('kl/s to kl/min', (t) => {
   t.plan(1)
   const expected = 60
   const actual = convert(1).from('kl/s').to('kl/min')
-  t.ok(percentError(expected, actual) < ACCURACY
-    , 'Expected: ' + expected + ', Actual: ' + actual)
+  t.ok(percentError(expected, actual) < ACCURACY, 'Expected: ' + expected + ', Actual: ' + actual)
 })
 
 test('l/s to kl/h', (t) => {
   t.plan(1)
   const expected = 3.6
   const actual = convert(1).from('l/s').to('kl/h')
-  t.ok(percentError(expected, actual) < ACCURACY
-    , 'Expected: ' + expected + ', Actual: ' + actual)
+  t.ok(percentError(expected, actual) < ACCURACY, 'Expected: ' + expected + ', Actual: ' + actual)
 })
 
 test('kl/min to l/h', (t) => {
   t.plan(1)
   const expected = 60000
   const actual = convert(1).from('kl/min').to('l/h')
-  t.ok(percentError(expected, actual) < ACCURACY
-    , 'Expected: ' + expected + ', Actual: ' + actual)
+  t.ok(percentError(expected, actual) < ACCURACY, 'Expected: ' + expected + ', Actual: ' + actual)
 })
 
 test('l/s to m3/h', (t) => {
   t.plan(1)
   const expected = 3.6
   const actual = convert(1).from('l/s').to('m3/h')
-  t.ok(percentError(expected, actual) < ACCURACY
-    , 'Expected: ' + expected + ', Actual: ' + actual)
+  t.ok(percentError(expected, actual) < ACCURACY, 'Expected: ' + expected + ', Actual: ' + actual)
 })
 
 test('m3/s to kl/h', (t) => {

@@ -51,3 +51,24 @@ test('.to before .from throws', (t) => {
     convert(4).to('kg').from('fl-oz')
   })
 })
+
+test('describe not existing', (t) => {
+  t.plan(1)
+  t.throws(function () {
+    convert().describe('xyz')
+  })
+})
+
+test('.toBest before .from throws', (t) => {
+  t.plan(1)
+  t.throws(function () {
+    convert().toBest({ exclude: ['km', 'm'] }).from('mm')
+  })
+})
+
+test('.from without destination', (t) => {
+  t.plan(1)
+  t.throws(function () {
+    convert().to('kg')
+  })
+})
