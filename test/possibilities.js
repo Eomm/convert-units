@@ -102,7 +102,7 @@ test('speed possibilities', (t) => {
 test('pace possibilities', (t) => {
   t.plan(1)
   const actual = convert().possibilities('pace')
-  const expected = ['s/m', 'min/km', 'min/mi', 's/ft']
+  const expected = ['s/m', 'min/km', 'min/mi', 's/ft', 's/mi']
   t.deepEquals(actual.sort(), expected.sort())
 })
 
@@ -330,6 +330,7 @@ test('all possibilities', (t) => {
     'min',
     'min/km',
     'min/mi',
+    's/mi',
     'ml',
     'ml/s',
     'mm',
