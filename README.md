@@ -261,6 +261,7 @@ convert().list('mass')
 * min/km
 * s/ft
 * min/km
+* s/mi
 
 ### Pressure
 * Pa
