@@ -55,3 +55,8 @@ test('min/mi to s/mi', (t) => {
   const actual = convert(1).from('min/mi').to('s/mi')
   t.ok(percentError(expected, actual) < ACCURACY, `Expected: ${expected}, Actual: ${actual}`)
 })
+
+test('s/ft to s/mi', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('s/ft').to('s/mi'), 5280)
+})
