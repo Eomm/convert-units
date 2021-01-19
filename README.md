@@ -259,6 +259,7 @@ convert().list('mass')
 ### Pace
 * s/m
 * min/km
+* s/km
 * s/ft
 * min/km
 * s/mi

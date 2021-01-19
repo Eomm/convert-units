@@ -60,3 +60,27 @@ test('s/ft to s/mi', (t) => {
   t.plan(1)
   t.equals(convert(1).from('s/ft').to('s/mi'), 5280)
 })
+
+test('s/km to s/km', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('s/km').to('s/km'), 1)
+})
+
+test('s/km to s/m', (t) => {
+  t.plan(1)
+  t.equals(convert(300).from('s/km').to('s/m'), 0.3)
+})
+
+test('s/km to min/km', (t) => {
+  t.plan(1)
+  const expected = 5.1
+  const actual = convert(306).from('s/km').to('min/km')
+  t.ok(percentError(expected, actual) < ACCURACY, `Expected: ${expected}, Actual: ${actual}`)
+})
+
+test('s/km to s/ft', (t) => {
+  t.plan(1)
+  const expected = 0.09144
+  const actual = convert(300).from('s/km').to('s/ft')
+  t.ok(percentError(expected, actual) < ACCURACY, `Expected: ${expected}, Actual: ${actual}`)
+})
