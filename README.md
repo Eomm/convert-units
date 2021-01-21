@@ -45,13 +45,13 @@ convert(12000).from('mm').toBest()
 // 12 Meters (the smallest unit with a value above 1)
 
 convert(12000).from('mm').toBest({ exclude: ['m'] })
-// 1200 Centimeters (the smallest unit excluding meters)
+// 120 Decimeters (the smallest unit excluding meters)
 
 convert(900).from('mm').toBest({ cutOffNumber: 10 });
 // 90 Centimeters (the smallest unit with a value equal to or above 10)
 
 convert(1000).from('mm').toBest({ cutOffNumber: 10 })
-// 100 Centimeters (the smallest unit with a value equal to or above 10)
+// 10 Decimeters (the smallest unit with a value equal to or above 10)
 ```
 
 You can get a list of the measurement types supported with `.measures`
@@ -80,7 +80,7 @@ convert().possibilities('mass')
 You can also get the all the available units:
 ```js
 convert().possibilities()
-// [ 'mm', 'cm', 'm', 'in', 'ft-us', 'ft', 'mi', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'mt', 't', 'ml', 'l', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ea', 'dz' ];
+// [ 'mm', 'cm', 'dm', 'm', 'in', 'ft-us', 'ft', 'mi', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'mt', 't', 'ml', 'l', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ea', 'dz' ];
 ```
 
 To get a detailed description of a unit, use `describe`
@@ -133,6 +133,7 @@ convert().list('mass')
 ### Length
 * mm
 * cm
+* dm
 * m
 * in
 * ft-us

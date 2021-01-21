@@ -20,10 +20,10 @@ test('excludes measurements', (t) => {
   t.plan(1)
   const actual = convert(1200000).from('mm').toBest({ exclude: ['km', 'm'] })
   const expected = {
-    val: 120000,
-    unit: 'cm',
-    singular: 'Centimeter',
-    plural: 'Centimeters'
+    val: 12000,
+    unit: 'dm',
+    singular: 'Decimeter',
+    plural: 'Decimeters'
   }
 
   t.deepEqual(actual, expected)
@@ -59,10 +59,10 @@ test('pre-cut off number', (t) => {
   t.plan(1)
   const actual = convert(9000).from('mm').toBest({ cutOffNumber: 10 })
   const expected = {
-    val: 900,
-    unit: 'cm',
-    singular: 'Centimeter',
-    plural: 'Centimeters'
+    val: 90,
+    unit: 'dm',
+    singular: 'Decimeter',
+    plural: 'Decimeters'
   }
 
   t.deepEquals(actual, expected)
