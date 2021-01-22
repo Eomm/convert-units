@@ -44,8 +44,8 @@ You can ask `convert-units` to select the best unit for you. You can also option
 convert(12000).from('mm').toBest()
 // 12 Meters (the smallest unit with a value above 1)
 
-convert(12000).from('mm').toBest({ exclude: ['m'] })
-// 120 Decimeters (the smallest unit excluding meters)
+convert(12000).from('mm').toBest({ exclude: ['m', 'dm'] })
+// 1200 Centimeters (the smallest unit excluding meters and decimeters)
 
 convert(900).from('mm').toBest({ cutOffNumber: 10 });
 // 90 Centimeters (the smallest unit with a value equal to or above 10)

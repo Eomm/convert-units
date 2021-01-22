@@ -18,12 +18,12 @@ test('best mm', (t) => {
 
 test('excludes measurements', (t) => {
   t.plan(1)
-  const actual = convert(1200000).from('mm').toBest({ exclude: ['km', 'm'] })
+  const actual = convert(1200000).from('mm').toBest({ exclude: ['km', 'm', 'dm'] })
   const expected = {
-    val: 12000,
-    unit: 'dm',
-    singular: 'Decimeter',
-    plural: 'Decimeters'
+    val: 120000,
+    unit: 'cm',
+    singular: 'Centimeter',
+    plural: 'Centimeters'
   }
 
   t.deepEqual(actual, expected)
@@ -57,12 +57,12 @@ test('if all measurements are excluded return from', (t) => {
 
 test('pre-cut off number', (t) => {
   t.plan(1)
-  const actual = convert(9000).from('mm').toBest({ cutOffNumber: 10 })
+  const actual = convert(9000).from('mm').toBest({ cutOffNumber: 100 })
   const expected = {
-    val: 90,
-    unit: 'dm',
-    singular: 'Decimeter',
-    plural: 'Decimeters'
+    val: 900,
+    unit: 'cm',
+    singular: 'Centimeter',
+    plural: 'Centimeters'
   }
 
   t.deepEquals(actual, expected)
