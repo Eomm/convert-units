@@ -18,7 +18,7 @@ test('best mm', (t) => {
 
 test('excludes measurements', (t) => {
   t.plan(1)
-  const actual = convert(1200000).from('mm').toBest({ exclude: ['km', 'm'] })
+  const actual = convert(1200000).from('mm').toBest({ exclude: ['km', 'm', 'dm'] })
   const expected = {
     val: 120000,
     unit: 'cm',
@@ -57,7 +57,7 @@ test('if all measurements are excluded return from', (t) => {
 
 test('pre-cut off number', (t) => {
   t.plan(1)
-  const actual = convert(9000).from('mm').toBest({ cutOffNumber: 10 })
+  const actual = convert(9000).from('mm').toBest({ cutOffNumber: 100 })
   const expected = {
     val: 900,
     unit: 'cm',

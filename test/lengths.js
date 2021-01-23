@@ -66,6 +66,16 @@ test('cm to m', (t) => {
   t.equals(convert(1).from('cm').to('m'), 1 / 100)
 })
 
+test('m to dm', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('m').to('dm'), 10)
+})
+
+test('dm to m', (t) => {
+  t.plan(1)
+  t.equals(convert(1).from('dm').to('m'), 1 / 10)
+})
+
 test('m to mm', (t) => {
   t.plan(1)
   t.equals(convert(1).from('m').to('mm'), 1000)

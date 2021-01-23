@@ -18,7 +18,7 @@ test('kg possibilities', (t) => {
 test('m possibilities', (t) => {
   t.plan(1)
   const actual = convert().from('m').possibilities()
-  const expected = ['mm', 'cm', 'm', 'km', 'in', 'yd', 'ft-us', 'ft', 'fathom', 'mi', 'nMi']
+  const expected = ['mm', 'cm', 'dm', 'm', 'km', 'in', 'yd', 'ft-us', 'ft', 'fathom', 'mi', 'nMi']
   t.deepEquals(actual.sort(), expected.sort())
 })
 
@@ -53,7 +53,7 @@ test('volume flow rate possibilities', (t) => {
 test('length possibilities', (t) => {
   t.plan(1)
   const actual = convert().possibilities('length')
-  const expected = ['mm', 'cm', 'm', 'km', 'in', 'yd', 'ft-us', 'ft', 'fathom', 'mi', 'nMi']
+  const expected = ['mm', 'cm', 'dm', 'm', 'km', 'in', 'yd', 'ft-us', 'ft', 'fathom', 'mi', 'nMi']
   t.deepEquals(actual.sort(), expected.sort())
 })
 
@@ -238,6 +238,7 @@ test('all possibilities', (t) => {
     'deg/s',
     'dl',
     'dl/s',
+    'dm',
     'ea',
     'dz',
     'fl-oz',
